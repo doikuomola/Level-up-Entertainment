@@ -7,9 +7,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Helmet from "react-helmet";
 import { img_500, unavailable } from "../../Config/Config";
-import "./ContentModal.css";
 import Gallery from "../Carousel/Carousel";
+import "./ContentModal.css";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -88,6 +89,13 @@ export default function TransitionsModal({ children, media_type, id }) {
                 <Fade in={open}>
                     {content && (
                         <div className={classes.paper}>
+                            <Helmet>
+                                <title>{content.title || content.name}</title>
+                                <meta
+                                    name="description"
+                                    content={content.overview}
+                                />
+                            </Helmet>
                             <div className="ContentModal">
                                 <img
                                     className="ContentModal__portrait"

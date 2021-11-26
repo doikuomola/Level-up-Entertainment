@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Helmet from "react-helmet";
 import Genres from "../../components/Genres/Genres";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 import SingleContent from "../../components/SingleContent/SingleContent";
@@ -35,6 +36,13 @@ const Movies = () => {
     return (
         <div>
             <span className="pageTitle">Movies</span>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Explore new movies with genres"
+                />
+                <title>Explore Movies</title>
+            </Helmet>
             <Genres
                 type="movie"
                 selectedGenres={selectedGenres}
